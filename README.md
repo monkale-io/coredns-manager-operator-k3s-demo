@@ -1,0 +1,1 @@
+# coredns-manager-operator-k3s-demo
