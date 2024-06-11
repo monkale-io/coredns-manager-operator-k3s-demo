@@ -1,0 +1,285 @@
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSZone
+metadata:
+  name: vortex-bubble-lab
+  namespace: kube-system
+spec:
+  connectorName: coredns
+  domain: "vortex.bubble.lab"
+  primaryNS:
+    ipAddress: "192.168.122.20"
+  respPersonEmail: "monkaleio@gmail.com"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: ns2-ns
+  namespace: kube-system
+spec:
+  record:
+    name: "@"
+    value: "ns2"
+    type: "NS"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: ns3-ns
+  namespace: kube-system
+spec:
+  record:
+    name: "@"
+    value: "ns3"
+    type: "NS"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: ns2-a
+  namespace: kube-system
+spec:
+  record:
+    name: "ns2"
+    value: "192.168.122.21"
+    type: "A"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: ns3-a
+  namespace: kube-system
+spec:
+  record:
+    name: "ns3"
+    value: "192.168.122.22"
+    type: "A"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: mail-relay
+  namespace: kube-system
+spec:
+  record:
+    name: "mx"
+    value: "10 mail-relay"
+    type: "MX"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: postgres-clients-lb
+  namespace: kube-system
+spec:
+  record:
+    name: "postgres-lb.db"
+    value: "haproxy"
+    type: "CNAME"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: postgres-node1-srv
+  namespace: kube-system
+spec:
+  record:
+    name: "_postgres._tcp"
+    value: "1 10 5432 postgres-node1.db"
+    type: "SRV"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: postgres-node2-srv
+  namespace: kube-system
+spec:
+  record:
+    name: "_postgres._tcp"
+    value: "1 10 5432 postgres-node2.db"
+    type: "SRV"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: postgres-node3-srv
+  namespace: kube-system
+spec:
+  record:
+    name: "_postgres._tcp"
+    value: "1 10 5432 postgres-node3.db"
+    type: "SRV"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: vortex-api
+  namespace: kube-system
+spec:
+  record:
+    name: "vortex.bubble.lab."
+    value: "haproxy"
+    type: "CNAME"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: devops
+  namespace: kube-system
+spec:
+  record:
+    name: "*.devops"
+    value: "haproxy"
+    type: "CNAME"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: haproxy-lb
+  namespace: kube-system
+spec:
+  record:
+    name: "haproxy"
+    value: "192.168.122.50"
+    type: "A"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: master0-k3s
+  namespace: kube-system
+spec:
+  record:
+    name: "master0"
+    value: "192.168.122.20"
+    type: "A"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: master1-k3s
+  namespace: kube-system
+spec:
+  record:
+    name: "master1"
+    value: "192.168.122.21"
+    type: "A"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: master2-k3s
+  namespace: kube-system
+spec:
+  record:
+    name: "master2"
+    value: "192.168.122.22"
+    type: "A"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: worker0-k3s
+  namespace: kube-system
+spec:
+  record:
+    name: "worker0"
+    value: "192.168.122.30"
+    type: "A"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: worker1-k3s
+  namespace: kube-system
+spec:
+  record:
+    name: "worker1"
+    value: "192.168.122.31"
+    type: "A"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: worker2-k3s
+  namespace: kube-system
+spec:
+  record:
+    name: "worker2"
+    value: "192.168.122.32"
+    type: "A"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: postgres-node1-db
+  namespace: kube-system
+spec:
+  record:
+    name: "postgres-node1.db"
+    value: "192.168.122.41"
+    type: "A"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: postgres-node2-db
+  namespace: kube-system
+spec:
+  record:
+    name: "postgres-node2.db"
+    value: "192.168.122.42"
+    type: "A"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
+---
+apiVersion: monkale.monkale.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: postgres-node3-db
+  namespace: kube-system
+spec:
+  record:
+    name: "postgres-node3.db"
+    value: "192.168.122.43"
+    type: "A"
+  dnsZoneRef:
+    name: "vortex-bubble-lab"
